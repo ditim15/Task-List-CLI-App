@@ -8,4 +8,7 @@ class Task:
         self.due_date = due_date
         self.date_completed = date_completed
 
-        
+    def __str__(self):
+        return (f"Task {self.id}, '{self.title}', was created {self.date_created}\n"
+                f"Priority: {self.priority}\n Status: {self.status}\n"
+                f"Due date: {self.due_date}\n Completed date: {self.date_completed}")
