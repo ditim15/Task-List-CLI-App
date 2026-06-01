@@ -1,2 +1,2 @@
 import json
-import task
+from task_manager.task import Task
