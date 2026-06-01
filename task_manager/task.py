@@ -1,3 +1,5 @@
+from datetime import date
+
 class Task:
     def __init__(self, id, title, date_created, priority,status="pending", due_date=None, date_completed=None):
         self.id = id
@@ -23,3 +25,15 @@ class Task:
             "due_date": self.due_date,
             "date_completed": self.date_completed
         }
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(
+            id=data["id"],
+            title=data["title"],
+            date_created=data["date_created"],
+            priority=data["priority"],
+            status=data["status"],
+            due_date=data.get("due_date"),
+            date_completed=data.get("date_completed")
+        )
