@@ -12,3 +12,14 @@ class Task:
         return (f"Task {self.id}, '{self.title}', was created {self.date_created}\n"
                 f"Priority: {self.priority}\n Status: {self.status}\n"
                 f"Due date: {self.due_date}\n Completed date: {self.date_completed}")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "date_created": self.date_created,
+            "priority": self.priority,
+            "status": self.status,
+            "due_date": self.due_date,
+            "date_completed": self.date_completed
+        }
