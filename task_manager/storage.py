@@ -14,3 +14,8 @@ def save_tasks(tasks):
     task_list = [task.to_dict(task) for task in tasks]
     with open(FILE, "w") as f:
         json.dump(task_list, f, indent=2)
+
+def get_next_id(tasks):
+    if not tasks:
+        return 1
+    return tasks[-1].id + 1
