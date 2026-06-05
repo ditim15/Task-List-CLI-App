@@ -61,7 +61,7 @@ def add_task(args):
 
     tasks.append(new_task)
     storage.save_tasks(tasks)
-    print(f"Saved {args.title} to task list.")
+    print(f"Saved '{args.title}' to task list.")
 
 
 def list_tasks(args):
