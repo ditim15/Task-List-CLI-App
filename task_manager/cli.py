@@ -10,6 +10,7 @@ def build_parser():
 
     subparsers = parser.add_subparsers(dest="command")
 
+    # Subparser for add command
     add_parser = subparsers.add_parser('add')
     add_parser.add_argument('title', type=str, help='Name of the task')
     add_parser.add_argument("--priority", choices=["low", "medium", "high"],
@@ -17,5 +18,16 @@ def build_parser():
     add_parser.add_argument("--due", type=str, default=None)
     add_parser.set_defaults(func=add_task)
 
-def add_task():
+    # Subparser for list command
+    list_parser = subparsers.add_parser('list')
+    list_parser.add_argument('--status', choices=["not started", "pending", "complete"],
+                             default='not started', help="Completion status of the task")
+    list_parser.add_argument('--priority', type=str, default=None)
+    list_parser.add_argument('--due', type=str, default=None)
+    list_parser.set_defaults(func=list_tasks)
+
+def add_task(args):
+    return
+
+def list_tasks(args):
     return
