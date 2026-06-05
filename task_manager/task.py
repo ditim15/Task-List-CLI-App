@@ -12,8 +12,8 @@ class Task:
 
     def __str__(self):
         return (f"Task {self.id}, '{self.title}', was created {self.date_created}\n"
-                f"Priority: {self.priority}\n Status: {self.status}\n"
-                f"Due date: {self.due_date}\n Completed date: {self.date_completed}")
+                f"Priority: {self.priority}\nStatus: {self.status}\n"
+                f"Due date: {self.due_date}\nCompleted date: {self.date_completed}\n")
 
     def to_dict(self):
         return {
