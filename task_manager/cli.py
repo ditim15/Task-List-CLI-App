@@ -103,4 +103,28 @@ def delete_task(args):
         print(f'Task {args.id} does not exist.')
 
 def edit_task(args):
-    return
+    tasks = storage.read_tasks()
+    found = False
+    updated = False
+    for task in tasks:
+        if task.id == args.id:
+            if args.title is not None:
+                task.title = args.title
+                updated = True
+            if args.priority is not None:
+                task.priority = args.priority
+                updated = True
+            if args.status is not None:
+                task.status = args.status
+                updated = True
+            if args.due is not None:
+                task.due_date = args.due
+                updated = True
+            found = True
+    if not found:
+        print(f'Task {args.id} does not exist.')
+    elif not updated:
+        print(f'Nothing was updated.')
+    else:
+        storage.save_tasks(tasks)
+        print(f'Task {args.id} succesfully updated.')
