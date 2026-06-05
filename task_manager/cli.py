@@ -93,7 +93,14 @@ def complete_task(args):
         print(f'Task {args.id} does not exist.')
 
 def delete_task(args):
-    return
+    tasks = storage.read_tasks()
+    tasks_length = len(tasks)
+    tasks = [task for task in tasks if task.id != args.id]
+    if len(tasks) < tasks_length:
+        storage.save_tasks(tasks)
+        print(f'Task {args.id} deleted.')
+    else:
+        print(f'Task {args.id} does not exist.')
 
 def edit_task(args):
     return
