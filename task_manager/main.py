@@ -1,4 +1,4 @@
-import cli
+from task_manager import cli
 
 def main():
     parser = cli.build_parser()
