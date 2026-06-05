@@ -11,7 +11,7 @@ def read_tasks():
         return []
 
 def save_tasks(tasks):
-    task_list = [task.to_dict(task) for task in tasks]
+    task_list = [task.to_dict() for task in tasks]
     with open(FILE, "w") as f:
         json.dump(task_list, f, indent=2)
 
