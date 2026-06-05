@@ -26,8 +26,16 @@ def build_parser():
     list_parser.add_argument('--due', type=str, default=None)
     list_parser.set_defaults(func=list_tasks)
 
+    # Subparser for complete command
+    complete_parser = subparsers.add_parser('complete')
+    complete_parser.add_argument("id", type=int, help="ID of the task to mark complete")
+    complete_parser.set_defaults(func=complete_task)
+
 def add_task(args):
     return
 
 def list_tasks(args):
+    return
+
+def complete_task(args):
     return
