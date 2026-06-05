@@ -1,5 +1,7 @@
 import argparse
+import datetime
 from task_manager import storage
+from task_manager.task import Task
 
 def build_parser():
     parser = argparse.ArgumentParser(
@@ -51,7 +53,16 @@ def build_parser():
     return parser
 
 def add_task(args):
-    return
+    tasks = storage.read_tasks()
+    new_id = storage.get_next_id(tasks)
+    date_created = datetime.datetime.now()
+    date_string = date_created.strftime("%Y-%m-%d")
+    new_task = Task(new_id, args.title, date_string, args.priority, due_date=args.due)
+
+    tasks.append(new_task)
+    storage.save_tasks(tasks)
+    print(f"Saved {args.title} to task list.")
+
 
 def list_tasks(args):
     return
