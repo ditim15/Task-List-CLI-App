@@ -31,6 +31,12 @@ def build_parser():
     complete_parser.add_argument("id", type=int, help="ID of the task to mark complete")
     complete_parser.set_defaults(func=complete_task)
 
+    # Subparser for delete command
+    delete_parser = subparsers.add_parser('delete')
+    delete_parser.add_argument("id", type=int, help="ID of the task to delete")
+    delete_parser.add_argument('title', type=str, help="Name of the task to delete")
+    delete_parser.set_defaults(func=delete_task)
+
 def add_task(args):
     return
 
@@ -38,4 +44,7 @@ def list_tasks(args):
     return
 
 def complete_task(args):
+    return
+
+def delete_task(args):
     return
