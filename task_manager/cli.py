@@ -65,7 +65,18 @@ def add_task(args):
 
 
 def list_tasks(args):
-    return
+    tasks = storage.read_tasks()
+    if args.priority is not None:
+        tasks = [task for task in tasks if task.priority == args.priority]
+    if args.status is not None:
+        tasks = [task for task in tasks if task.status == args.status]
+    if args.due is not None:
+        tasks = [task for task in tasks if task.due_date == args.due]
+    if len(tasks) == 0:
+        print("No tasks found.")
+    else:
+        for task in tasks:
+            print(task)
 
 def complete_task(args):
     return
