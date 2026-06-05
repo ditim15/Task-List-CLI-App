@@ -79,7 +79,18 @@ def list_tasks(args):
             print(task)
 
 def complete_task(args):
-    return
+    tasks = storage.read_tasks()
+    found = False
+    for task in tasks:
+        if task.id == args.id:
+            task.status = "complete"
+            task.date_completed = datetime.datetime.now().strftime("%Y-%m-%d")
+            found = True
+    if found:
+        storage.save_tasks(tasks)
+        print(f'Task {args.id} marked as completed.')
+    else:
+        print(f'Task {args.id} does not exist.')
 
 def delete_task(args):
     return
